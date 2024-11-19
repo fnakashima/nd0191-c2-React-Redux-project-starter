@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import QuestionSummary from "./QuestionSummary";
-import Question from "./Question";
+//import Question from "./Question";
 
 const Dashboard = (props) => {
   return (
