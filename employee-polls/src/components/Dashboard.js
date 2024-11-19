@@ -1,40 +1,31 @@
 import { connect } from "react-redux";
-import { formatDate } from "../utils/helpers";
+import QuestionSummary from "./QuestionSummary";
+import Question from "./Question";
 
 const Dashboard = (props) => {
   return (
-    <div>
-      <div>
-        <h2>Unanswered Polls</h2>
-        <ul>
+    <div className="dashboard">
+      <div className="poll-list-area">
+        <div className="header">
+          <h2>Unanswered Polls</h2>
+        </div>
+        <div className="poll-list">
           {props.unansweredQuestions.map((question) => (
-            <li key={question.id}>
-              <div>
-                <div>{question.author}</div>
-                <div>{formatDate(question.timestamp)}</div>
-                <div>
-                  <button>Show</button>
-                </div>
-              </div>
-            </li>
+            <QuestionSummary question={question} />
+            //<Question id={question.id} />
           ))}
-        </ul>
+        </div>
       </div>
-      <div>
-        <h2>Answered Polls</h2>
-        <ul>
+      <div className="poll-list-area">
+        <div className="header">
+          <h2>Answered Polls</h2>
+        </div>
+        <div className="poll-list">
           {props.answeredQuestions.map((question) => (
-            <li key={question.id}>
-              <div>
-                <div>{question.author}</div>
-                <div>{formatDate(question.timestamp)}</div>
-                <div>
-                  <button>Show</button>
-                </div>
-              </div>
-            </li>
+            <QuestionSummary question={question} />
+            //<Question id={question.id} />
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
