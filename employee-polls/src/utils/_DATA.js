@@ -180,6 +180,16 @@ export function _saveQuestion(question) {
         [formattedQuestion.id]: formattedQuestion,
       };
 
+      users = {
+        ...users,
+        [formattedQuestion.author]: {
+          ...users[formattedQuestion.author],
+          questions: users[formattedQuestion.author].questions.concat([
+            formattedQuestion.id,
+          ]),
+        },
+      };
+
       resolve(formattedQuestion);
     }, 1000);
   });

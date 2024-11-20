@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
+import { refreshUsers } from "../actions/users";
 
 const NewQuestion = ({ dispatch }) => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const NewQuestion = ({ dispatch }) => {
     //console.log("submit: ", optionOne, optionTwo);
 
     dispatch(handleAddQuestion(optionOne, optionTwo));
+    dispatch(refreshUsers());
 
     setOptionOne("");
     setOptionTwo("");
