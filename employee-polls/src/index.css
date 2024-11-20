@@ -228,10 +228,28 @@ table td img.avatar {
   font-weight: lighter;
 }
 
-.textarea {
+.new-poll {
+  text-align: center;
+}
+.new-poll h2 {
+  margin-bottom: 0;
+}
+.new-poll form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}
+.new-poll form label {
+  font-weight: bold;
+  margin: 20px 0 5px;
+}
+.new-poll form input {
   border-radius: 4px;
   border: 1px solid #dad7d7;
   padding: 10px;
   font-size: 15px;
-  height: 100px;
+  width: 100%;
 }
