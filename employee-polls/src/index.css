@@ -164,14 +164,29 @@ table td img.avatar {
   justify-content: center;
   align-items: center;
 }
-.poll-options div {
+.poll-options .option {
   margin: 10px;
   padding: 10px 0 0;
   border: 1px solid #dad7d7;
   border-radius: 4px;
   cursor: pointer;
   text-align: center;
-  width: 400px;
+  width: 50%;
+}
+.poll-options .option.voted {
+  animation: highlight 1s ease-out;
+  border: 3px solid #63b2ac;
+}
+@keyframes highlight {
+  from {
+    background-color: #63b2ac;
+  }
+  to {
+    background-color: #e0f7fa;
+  }
+}
+.poll-options .option.voted .option-label {
+  font-weight: bold;
 }
 .poll-options .btn {
   background-color: #63b2ac;

@@ -11,7 +11,7 @@ const Dashboard = (props) => {
         </div>
         <div className="poll-list">
           {props.unansweredQuestions.map((question) => (
-            <QuestionSummary question={question} />
+            <QuestionSummary key={question.id} question={question} />
             //<Question id={question.id} />
           ))}
         </div>
@@ -22,7 +22,7 @@ const Dashboard = (props) => {
         </div>
         <div className="poll-list">
           {props.answeredQuestions.map((question) => (
-            <QuestionSummary question={question} />
+            <QuestionSummary key={question.id} question={question} />
             //<Question id={question.id} />
           ))}
         </div>

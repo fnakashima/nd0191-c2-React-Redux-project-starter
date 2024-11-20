@@ -10,7 +10,7 @@ const QuestionSummary = ({ question }) => {
   };
 
   return (
-    <div className="poll-list-item" key={question.id}>
+    <div className="poll-list-item">
       <div className="author">{question.author}</div>
       <div>{formatDate(question.timestamp)}</div>
       <div className="btn-area">

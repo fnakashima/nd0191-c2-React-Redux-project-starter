@@ -1,5 +1,8 @@
 import { connect } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { handleAnswerQuestion } from "../actions/questions";
+import { refreshUsers } from "../actions/users";
+import QuestionOption from "./QuestionOption";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -13,10 +16,19 @@ const withRouter = (Component) => {
 
 const Question = (props) => {
   console.log(props);
-  const question = props.question;
+  const { dispatch, authedUser, answered, question } = props;
   if (question === null) {
+    // TODO Redirect to 404 page
     return <p>This question doesn't exist</p>;
   }
+
+  const handleVote = (option) => {
+    console.log("handleVote", option);
+    dispatch(handleAnswerQuestion(question.id, option));
+    dispatch(refreshUsers());
+    // Refresh the page to show the results
+    props.router.navigate(`/question/${question.id}`);
+  };
 
   return (
     <div className="center">
@@ -30,18 +42,18 @@ const Question = (props) => {
       </div>
       <h2>Would you rather...</h2>
       <div className="poll-options">
-        <div>
-          <p>{question.optionOne.text}</p>
-          <button className="btn" onClick={() => console.log("Option One")}>
-            Vote
-          </button>
-        </div>
-        <div>
-          <p>{question.optionTwo.text}</p>
-          <button className="btn" onClick={() => console.log("Option Two")}>
-            Vote
-          </button>
-        </div>
+        <QuestionOption
+          authedUser={authedUser}
+          option={question.optionOne}
+          answered={answered}
+          handleVote={handleVote}
+        />
+        <QuestionOption
+          authedUser={authedUser}
+          option={question.optionTwo}
+          answered={answered}
+          handleVote={handleVote}
+        />
       </div>
     </div>
   );
@@ -56,13 +68,36 @@ const mapStateToProps = ({ authedUser, users, questions }, props) => {
       question: null, // return null if question doesn't exist
     };
   }
+  const answered =
+    question.optionOne.votes.includes(authedUser) ||
+    question.optionTwo.votes.includes(authedUser);
+  const optionOneVotes = question.optionOne.votes.length;
+  const optionTwoVotes = question.optionTwo.votes.length;
+  const totalVotes = optionOneVotes + optionTwoVotes;
 
   return {
     authedUser,
+    answered,
     question: {
       id: question.id,
-      optionOne: question.optionOne,
-      optionTwo: question.optionTwo,
+      optionOne: {
+        ...question.optionOne,
+        key: "optionOne",
+        isVoted: question.optionOne.votes.includes(authedUser),
+        percentage:
+          totalVotes !== 0
+            ? Math.round((optionOneVotes / totalVotes) * 100)
+            : 0,
+      },
+      optionTwo: {
+        ...question.optionTwo,
+        key: "optionTwo",
+        isVoted: question.optionTwo.votes.includes(authedUser),
+        percentage:
+          totalVotes !== 0
+            ? Math.round((optionTwoVotes / totalVotes) * 100)
+            : 0,
+      },
       author: users[question.author],
     },
   };
