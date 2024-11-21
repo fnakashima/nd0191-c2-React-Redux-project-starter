@@ -16,10 +16,12 @@ const withRouter = (Component) => {
 
 const Question = (props) => {
   console.log(props);
+  const navigate = useNavigate();
   const { dispatch, authedUser, answered, question } = props;
   if (question === null) {
     // TODO Redirect to 404 page
-    return <p>This question doesn't exist</p>;
+    navigate("/404");
+    return null;
   }
 
   const handleVote = (option) => {

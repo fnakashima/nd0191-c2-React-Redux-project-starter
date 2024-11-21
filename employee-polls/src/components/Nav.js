@@ -1,11 +1,18 @@
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import setAuthedUser from "../actions/authedUser";
 
 const Nav = (props) => {
+  const navigate = useNavigate();
   const { profile } = props;
   if (!profile) {
     return null;
   }
+
+  const handleLogout = (e) => {
+    props.dispatch(setAuthedUser(null));
+    navigate("/login");
+  };
 
   return (
     <div className="header-nav">
@@ -35,7 +42,9 @@ const Nav = (props) => {
             </div>
           </li>
           <li>
-            <Link to="/logout">Logout</Link>
+            <button className="logout" onClick={handleLogout}>
+              Logout
+            </button>
           </li>
         </ul>
       </nav>
