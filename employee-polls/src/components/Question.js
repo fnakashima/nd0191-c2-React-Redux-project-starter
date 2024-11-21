@@ -15,21 +15,20 @@ const withRouter = (Component) => {
 };
 
 const Question = (props) => {
-  console.log(props);
+  //console.log(props);
   const navigate = useNavigate();
   const { dispatch, authedUser, answered, question } = props;
   if (question === null) {
-    // TODO Redirect to 404 page
     navigate("/404");
     return null;
   }
 
   const handleVote = (option) => {
-    console.log("handleVote", option);
+    //console.log("handleVote", option);
     dispatch(handleAnswerQuestion(question.id, option));
     dispatch(refreshUsers());
     // Refresh the page to show the results
-    props.router.navigate(`/question/${question.id}`);
+    navigate(`/question/${question.id}`);
   };
 
   return (

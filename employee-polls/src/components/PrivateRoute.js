@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ authedUser, loading, children }) => {
-  console.log("[PrivateRoute] authedUser", authedUser);
+  //console.log("[PrivateRoute] authedUser", authedUser);
   const location = useLocation();
-  console.log("[PrivateRoute] location", location);
+  //console.log("[PrivateRoute] location", location);
   if (loading) {
     return null;
   }

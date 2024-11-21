@@ -1,4 +1,4 @@
-const QuestionOption = ({ authedUser, option, answered, handleVote }) => {
+const QuestionOption = ({ option, answered, handleVote }) => {
   const handleAnswer = (e) => {
     e.preventDefault();
     handleVote(option.key);

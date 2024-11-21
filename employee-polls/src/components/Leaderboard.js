@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 const Leaderboard = (props) => {
-  console.log(`Leaderboard props: ${props}`);
+  //console.log(`Leaderboard props: ${props}`);
   if (props.userList.length === 0) {
     return <p>No users found</p>;
   }
