@@ -292,3 +292,12 @@ table td img.avatar {
   font-size: 15px;
   width: 100%;
 }
+.new-poll form .btn {
+  background-color: #63b2ac;
+  color: white;
+}
+.new-poll form .btn[disabled] {
+  background-color: #f2f2f2;
+  color: #dad7d7;
+  cursor: not-allowed;
+}

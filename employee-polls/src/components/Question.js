@@ -40,7 +40,7 @@ const Question = (props) => {
           alt={`Avatar of ${question.author.name}`}
         />
       </div>
-      <h2>Would you rather...</h2>
+      <h2>Would You Rather</h2>
       <div className="poll-options">
         <QuestionOption
           authedUser={authedUser}
