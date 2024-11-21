@@ -40,6 +40,7 @@ const NewQuestion = ({ dispatch }) => {
         <input
           type="text"
           name="optionOne"
+          data-testid="option-one"
           placeholder="Enter Option One Text Here"
           onChange={handleChange}
         />
@@ -47,6 +48,7 @@ const NewQuestion = ({ dispatch }) => {
         <input
           type="text"
           name="optionTwo"
+          data-testid="option-two"
           placeholder="Enter Option Two Text Here"
           onChange={handleChange}
         />
