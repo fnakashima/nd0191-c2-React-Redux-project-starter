@@ -1,31 +1,53 @@
+import { useState } from "react";
 import { connect } from "react-redux";
 import QuestionSummary from "./QuestionSummary";
 //import Question from "./Question";
 
 const Dashboard = (props) => {
+  const [showUnanswered, setShowUnanswered] = useState(true);
+
   return (
     <div className="dashboard">
-      <div className="poll-list-area">
-        <div className="header">
-          <h2>Unanswered Polls</h2>
-        </div>
-        <div className="poll-list">
-          {props.unansweredQuestions.map((question) => (
-            <QuestionSummary key={question.id} question={question} />
-            //<Question id={question.id} />
-          ))}
-        </div>
+      <div className="tabs">
+        <button
+          className={showUnanswered ? "active" : ""}
+          onClick={() => setShowUnanswered(true)}
+        >
+          Unanswered
+        </button>
+        <button
+          className={!showUnanswered ? "active" : ""}
+          onClick={() => setShowUnanswered(false)}
+        >
+          Answered
+        </button>
       </div>
       <div className="poll-list-area">
-        <div className="header">
-          <h2>Answered Polls</h2>
-        </div>
-        <div className="poll-list">
-          {props.answeredQuestions.map((question) => (
-            <QuestionSummary key={question.id} question={question} />
-            //<Question id={question.id} />
-          ))}
-        </div>
+        {showUnanswered ? (
+          <>
+            <div className="header">
+              <h2>Unanswered Polls</h2>
+            </div>
+            <div className="poll-list">
+              {props.unansweredQuestions.map((question) => (
+                <QuestionSummary key={question.id} question={question} />
+                //<Question id={question.id} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="header">
+              <h2>Answered Polls</h2>
+            </div>
+            <div className="poll-list">
+              {props.answeredQuestions.map((question) => (
+                <QuestionSummary key={question.id} question={question} />
+                //<Question id={question.id} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
