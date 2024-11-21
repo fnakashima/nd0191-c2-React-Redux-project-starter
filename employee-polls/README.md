@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# Employee Polls Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
 
-## Available Scripts
+The **Employee Polls** project is a web application that allows employees to create polls for their coworkers. The core functionality involves asking questions in the form: "Would you rather [option A] or [option B]?". Users cannot choose "neither" or "both" — they must decide between the two options.
 
-In the project directory, you can run:
+In this application, users can:
 
-### `npm start`
+- Answer polls and view both answered and unanswered polls.
+- Create new polls for their colleagues to answer.
+- See how others have responded to existing polls.
+- View a leaderboard that ranks users based on their poll activity.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application provides features such as logging in, navigating between answered and unanswered polls, voting, posting new polls, and checking user rankings on the leaderboard.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## App Functionality
 
-### `npm test`
+### Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Login**: Users can impersonate existing users by selecting from a dropdown on the login page. After login, the user can view and interact with polls relevant to their account. Information about the logged-in user is always displayed on the page.
+- **Home Page**: After logging in, users are presented with polls categorized into unanswered and answered sections, sorted by creation date (newest at the top). Unanswered polls are displayed by default.
+- **Poll Details**: Clicking a poll provides more information, including:
+  - "Would You Rather" question text.
+  - Avatar of the poll author.
+  - Voting options with counts and percentages for answered polls.
+- **Voting**: Users can vote on unanswered polls, and upon voting, the poll details are updated to show the results.
+  - Users are allowed to vote only once, and they cannot change their answers.
+- **404 Page**: If a user attempts to access a poll that does not exist, a 404 error page is displayed.
+- **Navigation**: A navigation bar allows easy movement between the home page, leaderboard, and other sections of the application.
+- **New Poll**: Users can create new polls by navigating to `/add` and submitting a form with two options. The newly created poll will be displayed in the appropriate category on the home page.
+- **Leaderboard**: A leaderboard at `/leaderboard` shows each user ranked by the number of polls created and answered. Each entry includes the user's name, avatar, number of questions asked, and number of questions answered.
 
-### `npm run build`
+## Installation and Launch Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Follow these steps to install and run the Employee Polls project locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js (v12 or later)
+- npm (v6 or later)
 
-### `npm run eject`
+### Installation Steps
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the Repository**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   git clone <repository-url>
+   cd employee-polls
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Install Dependencies**
+   Install all the required dependencies using npm:
+   ```bash
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Running the Application
 
-## Learn More
+To launch the application locally, use the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This command will start the development server, and the application will be accessible at `http://localhost:3000` in your web browser.
 
-### Code Splitting
+### Running Tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To run the test suite, execute the following command:
 
-### Analyzing the Bundle Size
+```bash
+npm test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This will run the available unit tests for the application using Jest.
 
-### Making a Progressive Web App
+## Project Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **`npm start`**: Starts the development server.
+- **`npm build`**: Builds the application for production.
+- **`npm test`**: Runs the unit tests using Jest.
+- **`npm eject`**: Ejects the configuration files from `create-react-app`. Use with caution.
 
-### Advanced Configuration
+## Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The project is built using the following major dependencies:
 
-### Deployment
+- **React**: Frontend UI framework (`react`, `react-dom`).
+- **React Router**: Handles routing within the application (`react-router-dom`).
+- **Redux**: State management (`redux`, `react-redux`).
+- **Redux Thunk**: Middleware for handling asynchronous actions (`redux-thunk`).
+- **React Testing Library**: Used for unit testing React components (`@testing-library/react`, `@testing-library/jest-dom`).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contact
 
-### `npm run build` fails to minify
+If you have any questions or encounter any issues, feel free to open an issue on the repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy building and using the Employee Polls app!
