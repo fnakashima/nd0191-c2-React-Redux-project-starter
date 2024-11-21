@@ -224,7 +224,7 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
         },
       };
 
-      resolve(questions);
+      resolve(true);
     }, 500);
   });
 }
